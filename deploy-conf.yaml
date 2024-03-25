@@ -49,13 +49,3 @@ resources:
         - default
         - { get_resource: web_secgroup }
   
-  server1_floating_ip:
-    type: OS::Neutron::FloatingIP
-    properties:
-      floating_network_id: { get_param: floating_network_name }
-
-  association:
-    type: OS::Neutron::FloatingIPAssociation
-    properties:
-      floatingip_id: { get_resource: server1_floating_ip }
-      port_id: { get_resource: server1_port }
